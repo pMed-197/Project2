@@ -15,10 +15,20 @@ public class User {
     private String mUserPassword;
     private int mRewardPoints;
 
+    private int mIsAdmin;
+
     public User(String username, String userPassword) {
         mUsername = username;
         mUserPassword = userPassword;
         mRewardPoints = 0;
+        mIsAdmin = 0;
+    }
+
+    public User(String username, String userPassword, int admin) {
+        mUsername = username;
+        mUserPassword = userPassword;
+        mRewardPoints = 0;
+        mIsAdmin = admin;
     }
 
     public int getLogId() {
@@ -51,6 +61,14 @@ public class User {
 
     public void setRewardPoints(int rewardPoints) {
         mRewardPoints = rewardPoints;
+    }
+
+    public int getIsAdmin() {
+        return mIsAdmin;
+    }
+
+    public void setIsAdmin(int isAdmin) {
+        mIsAdmin = isAdmin;
     }
 
     @Override
