@@ -21,7 +21,8 @@ public class UserLandingActivity extends AppCompatActivity {
 
     TextView mWelcomeDisplay;
     ActivityUserLandingBinding binding;
-    Button mAdminButton;
+    Button mChangeUserButton;
+    Button mChangeFlightButton;
     Button mSearchFlights;
     Button mCheckBookings;
     Button mLogout;
@@ -36,7 +37,8 @@ public class UserLandingActivity extends AppCompatActivity {
         setContentView(binding.getRoot());
 
         mWelcomeDisplay = binding.landingWelcomeMsg;
-        mAdminButton = binding.adminButton;
+        mChangeUserButton = binding.changeUserButton;
+        mChangeFlightButton = binding.changeFlightButton;
         mSearchFlights = binding.searchFlightsButton;
         mCheckBookings = binding.checkBookingsButton;
         mLogout = binding.logoutButton;
@@ -52,7 +54,8 @@ public class UserLandingActivity extends AppCompatActivity {
         mWelcomeDisplay.setText(getString(R.string.landingPagePartial)+ user.get(0).getUsername());
 
         if (user.get(0).getIsAdmin() == 1) {
-            mAdminButton.setVisibility(View.VISIBLE);
+            mChangeUserButton.setVisibility(View.VISIBLE);
+            mChangeFlightButton.setVisibility(View.VISIBLE);
         }
 
         mLogout.setOnClickListener(new View.OnClickListener() {
