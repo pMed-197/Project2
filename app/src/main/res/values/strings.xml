@@ -17,6 +17,9 @@
     <string name="admin_things">Admin Things</string>
     <string name="change_user_button">Add/Delete User</string>
     <string name="change_flight_button">Add/Delete Flight</string>
+    <string name="add_a_flight_title">Add a Flight</string>
+    <string name="delete_a_flight_title">Delete a Flight</string>
+    <string name="go_back_button">Go Back</string>
 
 
 </resources>

@@ -65,6 +65,14 @@ public class UserLandingActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+        mChangeFlightButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = changeFlightActivity.getIntent(getApplicationContext(), userId);
+                startActivity(intent);
+            }
+        });
     }
 
     public static Intent getIntent(Context context, int userId) {

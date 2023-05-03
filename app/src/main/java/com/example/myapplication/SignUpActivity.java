@@ -21,7 +21,7 @@ public class SignUpActivity extends AppCompatActivity {
 
     EditText mUsername;
     EditText mUserPassword;
-    EditText mUserPasswordVerfiy;
+    EditText mUserPasswordVerify;
 
     TextView mErrMsgView;
 
@@ -40,7 +40,7 @@ public class SignUpActivity extends AppCompatActivity {
 
         mUsername = binding.mainUsernameEditText;
         mUserPassword = binding.mainUserPasswordEditText;
-        mUserPasswordVerfiy = binding.mainUserPasswordVerifyEditText;
+        mUserPasswordVerify = binding.mainUserPasswordVerifyEditText;
         mSubmit = binding.mainSignUpButton;
         mErrMsgView = binding.signUpErrMsg;
 
@@ -58,7 +58,7 @@ public class SignUpActivity extends AppCompatActivity {
                     mErrMsgView.setText(R.string.username_taken_msg);
                     return;
                 }
-                if (!mUserPassword.getText().toString().equals(mUserPasswordVerfiy.getText().toString())) {
+                if (!mUserPassword.getText().toString().equals(mUserPasswordVerify.getText().toString())) {
                     mErrMsgView.setText(R.string.password_mismatch_message);
                     return;
                 }
