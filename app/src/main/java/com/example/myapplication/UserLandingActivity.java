@@ -45,7 +45,7 @@ public class UserLandingActivity extends AppCompatActivity {
 
         mUserDAO = Room.databaseBuilder(this, AppDataBase.class, AppDataBase.DATABASE_NAME)
                 .allowMainThreadQueries()
-                .createFromAsset("database/AirlineTracker_DB.db")
+                .createFromAsset("database/AirlineTracker.db")
                 .build()
                 .UserDAO();
 
@@ -62,6 +62,14 @@ public class UserLandingActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = MainActivity.getIntent(getApplicationContext());
+                startActivity(intent);
+            }
+        });
+
+        mChangeFlightButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = changeFlightActivity.getIntent(getApplicationContext(), userId);
                 startActivity(intent);
             }
         });
