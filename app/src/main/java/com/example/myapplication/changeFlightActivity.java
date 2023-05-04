@@ -56,7 +56,7 @@ public class changeFlightActivity extends AppCompatActivity {
         mBackButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = UserLandingActivity.getIntent(getApplicationContext(), userId);
+                Intent intent = AdminOptionsActivity.getIntent(getApplicationContext(), userId);
                 startActivity(intent);
             }
         });
