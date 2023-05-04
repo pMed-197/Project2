@@ -45,7 +45,7 @@ public class UserLandingActivity extends AppCompatActivity {
 
         mUserDAO = Room.databaseBuilder(this, AppDataBase.class, AppDataBase.DATABASE_NAME)
                 .allowMainThreadQueries()
-                .createFromAsset("database/AirlineTracker_DB.db")
+                .createFromAsset("database/AirlineTracker.db")
                 .build()
                 .UserDAO();
 

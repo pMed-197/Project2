@@ -2,7 +2,7 @@
   "formatVersion": 1,
   "database": {
     "version": 1,
-    "identityHash": "084c86613e30d025ebe980329803edc4",
+    "identityHash": "6ff276d49a0048220fb398a4f2a8da6e",
     "entities": [
       {
         "tableName": "user",
@@ -47,12 +47,56 @@
         },
         "indices": [],
         "foreignKeys": []
+      },
+      {
+        "tableName": "flights",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`mFlightId` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `mOrigin` TEXT, `mDestination` TEXT, `mCapacity` INTEGER NOT NULL, `mPurchases` INTEGER NOT NULL)",
+        "fields": [
+          {
+            "fieldPath": "mFlightId",
+            "columnName": "mFlightId",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "mOrigin",
+            "columnName": "mOrigin",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "mDestination",
+            "columnName": "mDestination",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "mCapacity",
+            "columnName": "mCapacity",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "mPurchases",
+            "columnName": "mPurchases",
+            "affinity": "INTEGER",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "mFlightId"
+          ],
+          "autoGenerate": true
+        },
+        "indices": [],
+        "foreignKeys": []
       }
     ],
     "views": [],
     "setupQueries": [
       "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
-      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '084c86613e30d025ebe980329803edc4')"
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '6ff276d49a0048220fb398a4f2a8da6e')"
     ]
   }
 }

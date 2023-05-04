@@ -20,6 +20,12 @@
     <string name="add_a_flight_title">Add a Flight</string>
     <string name="delete_a_flight_title">Delete a Flight</string>
     <string name="go_back_button">Go Back</string>
+    <string name="where_from_text_input">Where From?</string>
+    <string name="where_to_text_input">Where To?</string>
+    <string name="flight_capacity_text_input">Flight Capacity</string>
+    <string name="enter_flight_id_input">Enter Flight ID</string>
+    <string name="add_flight_button">Add Flight!</string>
+    <string name="delete_flight_button">Delete Flight!</string>
 
 
 </resources>
