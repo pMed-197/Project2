@@ -18,7 +18,7 @@ public class AdminOptionsActivity extends AppCompatActivity {
     Button mChangeFlightsButton;
     Button mChangeBookingsButton;
     Button mDisplayDatabaseButton;
-    Button mGoBackButton;
+    Button mBackButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,7 +31,7 @@ public class AdminOptionsActivity extends AppCompatActivity {
         mChangeFlightsButton = binding.changeFlightsButton;
         mChangeBookingsButton = binding.changeBookingsButton;
         mDisplayDatabaseButton = binding.databaseDetailsButton;
-        mGoBackButton = binding.goBackButton2;
+        mBackButton = binding.goBackButton2;
 
         int userId = getIntent().getIntExtra(ADMIN_OPTIONS_ACTIVITY_USER, -1);
 
@@ -43,7 +43,15 @@ public class AdminOptionsActivity extends AppCompatActivity {
             }
         });
 
-        mGoBackButton.setOnClickListener(new View.OnClickListener() {
+        mChangeBookingsButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = ChangeBookingActivity.getIntent(getApplicationContext(), userId);
+                startActivity(intent);
+            }
+        });
+
+        mBackButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = UserLandingActivity.getIntent(getApplicationContext(), userId);
