@@ -26,6 +26,13 @@
     <string name="enter_flight_id_input">Enter Flight ID</string>
     <string name="add_flight_button">Add Flight!</string>
     <string name="delete_flight_button">Delete Flight!</string>
+    <string name="account_details_button">Account Details</string>
+    <string name="admin_options_button">Admin Options</string>
+    <string name="change_bookings_button">Delete Booking</string>
+    <string name="view_database_details_button">Database Details</string>
+    <string name="delete_booking_textView">Delete Booking</string>
+    <string name="enter_booking_id_hint">Enter Booking ID</string>
+    <string name="delete_booking_button">Delete Booking!</string>
 
 
 </resources>

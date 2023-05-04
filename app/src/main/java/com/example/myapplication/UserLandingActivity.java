@@ -21,8 +21,8 @@ public class UserLandingActivity extends AppCompatActivity {
 
     TextView mWelcomeDisplay;
     ActivityUserLandingBinding binding;
-    Button mChangeUserButton;
-    Button mChangeFlightButton;
+    Button mAdminOptionsButton;
+    Button mAccountDetailsButton;
     Button mSearchFlights;
     Button mCheckBookings;
     Button mLogout;
@@ -37,8 +37,8 @@ public class UserLandingActivity extends AppCompatActivity {
         setContentView(binding.getRoot());
 
         mWelcomeDisplay = binding.landingWelcomeMsg;
-        mChangeUserButton = binding.changeUserButton;
-        mChangeFlightButton = binding.changeFlightButton;
+        mAdminOptionsButton = binding.adminOptionsButton;
+        mAccountDetailsButton = binding.accountDetailsButton;
         mSearchFlights = binding.searchFlightsButton;
         mCheckBookings = binding.checkBookingsButton;
         mLogout = binding.logoutButton;
@@ -54,8 +54,7 @@ public class UserLandingActivity extends AppCompatActivity {
         mWelcomeDisplay.setText(getString(R.string.landingPagePartial)+ user.get(0).getUsername());
 
         if (user.get(0).getIsAdmin() == 1) {
-            mChangeUserButton.setVisibility(View.VISIBLE);
-            mChangeFlightButton.setVisibility(View.VISIBLE);
+            mAdminOptionsButton.setVisibility(View.VISIBLE);
         }
 
         mLogout.setOnClickListener(new View.OnClickListener() {
@@ -66,10 +65,10 @@ public class UserLandingActivity extends AppCompatActivity {
             }
         });
 
-        mChangeFlightButton.setOnClickListener(new View.OnClickListener() {
+        mAdminOptionsButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = changeFlightActivity.getIntent(getApplicationContext(), userId);
+                Intent intent = AdminOptionsActivity.getIntent(getApplicationContext(), userId);
                 startActivity(intent);
             }
         });
