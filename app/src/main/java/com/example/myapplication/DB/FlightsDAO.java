@@ -9,6 +9,8 @@ import androidx.room.Update;
 import com.example.myapplication.Flights;
 import com.example.myapplication.User;
 
+import java.util.List;
+
 @Dao
 public interface FlightsDAO {
     @Insert
@@ -22,4 +24,7 @@ public interface FlightsDAO {
 
     @Query("SELECT * FROM " + AppDataBase.FLIGHTS_TABLE + " WHERE mFlightId= :flightId")
     Flights getById(int flightId);
+
+    @Query("SELECT * FROM " + AppDataBase.FLIGHTS_TABLE)
+    List<Flights> getAllFlights();
 }
