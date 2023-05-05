@@ -51,6 +51,14 @@ public class AdminOptionsActivity extends AppCompatActivity {
             }
         });
 
+        mDisplayDatabaseButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = DisplayDatabaseActivity.getIntent(getApplicationContext(), userId);
+                startActivity(intent);
+            }
+        });
+
         mBackButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

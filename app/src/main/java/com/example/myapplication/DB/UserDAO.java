@@ -9,6 +9,7 @@ import androidx.room.Update;
 
 import com.example.myapplication.User;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Dao
@@ -29,4 +30,6 @@ public interface UserDAO {
     @Query("SELECT * FROM " + AppDataBase.USER_TABLE + " WHERE mUsername= :username")
     User getByUsername(String username);
 
+    @Query("SELECT * FROM " + AppDataBase.USER_TABLE)
+    List<User> getAllUsers();
 }

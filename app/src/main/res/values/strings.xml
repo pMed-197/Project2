@@ -33,6 +33,9 @@
     <string name="delete_booking_textView">Delete Booking</string>
     <string name="enter_booking_id_hint">Enter Booking ID</string>
     <string name="delete_booking_button">Delete Booking!</string>
+    <string name="user_s_table_text_view">User\'s Table</string>
+    <string name="booking_s_table_text_view">Booking\'s Table</string>
+    <string name="flight_s_table_text_view">Flight\'s Table</string>
 
 
 </resources>
