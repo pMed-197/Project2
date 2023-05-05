@@ -26,7 +26,7 @@ public class SignUpActivity extends AppCompatActivity {
     TextView mErrMsgView;
 
     Button mSubmit;
-
+    Button mBackButton;
     UserDAO mUserDAO;
     ActivitySignUpBinding binding;
 
@@ -42,6 +42,7 @@ public class SignUpActivity extends AppCompatActivity {
         mUserPassword = binding.mainUserPasswordEditText;
         mUserPasswordVerify = binding.mainUserPasswordVerifyEditText;
         mSubmit = binding.mainSignUpButton;
+        mBackButton = binding.goBackButton6;
         mErrMsgView = binding.signUpErrMsg;
 
         mUserDAO= Room.databaseBuilder(this, AppDataBase.class,AppDataBase.DATABASE_NAME)
@@ -63,6 +64,14 @@ public class SignUpActivity extends AppCompatActivity {
                     return;
                 }
                 submitUser();
+                Intent intent = MainActivity.getIntent(getApplicationContext());
+                startActivity(intent);
+            }
+        });
+
+        mBackButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
                 Intent intent = MainActivity.getIntent(getApplicationContext());
                 startActivity(intent);
             }
