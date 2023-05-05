@@ -10,6 +10,8 @@ import com.example.myapplication.Bookings;
 import com.example.myapplication.Flights;
 import com.example.myapplication.User;
 
+import java.util.List;
+
 @Dao
 public interface BookingsDAO {
     @Insert
@@ -23,4 +25,7 @@ public interface BookingsDAO {
 
     @Query("SELECT * FROM " + AppDataBase.BOOKINGS_TABLE + " WHERE mBookingId= :bookingId")
     Bookings getById(int bookingId);
+
+    @Query("SELECT * FROM " + AppDataBase.BOOKINGS_TABLE)
+    List<Bookings> getAllBookings();
 }
