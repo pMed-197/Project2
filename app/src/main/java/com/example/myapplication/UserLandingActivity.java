@@ -72,6 +72,14 @@ public class UserLandingActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+        mAccountDetailsButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = AccountDetailsActivity.getIntent(getApplicationContext(), userId);
+                startActivity(intent);
+            }
+        });
     }
 
     public static Intent getIntent(Context context, int userId) {
