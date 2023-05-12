@@ -27,4 +27,7 @@ public interface FlightsDAO {
 
     @Query("SELECT * FROM " + AppDataBase.FLIGHTS_TABLE)
     List<Flights> getAllFlights();
+
+    @Query("SELECT * FROM " + AppDataBase.FLIGHTS_TABLE + " WHERE mOrigin = :origin AND mDestination = :destination")
+    List<Flights> getByOriginAndDestination(String origin, String destination);
 }
