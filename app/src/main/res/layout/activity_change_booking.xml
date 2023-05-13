@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#333333"
     tools:context=".ChangeBookingActivity">
 
     <TextView
@@ -12,6 +13,7 @@
         android:layout_height="53dp"
         android:gravity="center"
         android:text="@string/delete_booking_textView"
+        android:textColor="@color/white"
         android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -28,6 +30,8 @@
         android:ems="10"
         android:gravity="center"
         android:hint="@string/enter_booking_id_hint"
+        android:textColor="@color/white"
+        android:textColorHint="@color/white"
         android:inputType="number"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

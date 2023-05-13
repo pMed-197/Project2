@@ -9,6 +9,8 @@
     <androidx.cardview.widget.CardView
         android:layout_width="381dp"
         android:layout_height="37dp"
+        android:background="#333333"
+        android:layout_margin="4dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -16,13 +18,15 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:background="#333333">
 
             <TextView
                 android:id="@+id/flightIdRowTextView"
                 android:layout_width="47dp"
-                android:layout_height="36dp"
+                android:layout_height="37dp"
                 android:text="TextView"
+                android:textColor="@color/white"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
@@ -35,6 +39,7 @@
                 android:layout_width="110dp"
                 android:layout_height="37dp"
                 android:text="TextView"
+                android:textColor="@color/white"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.173"
@@ -47,6 +52,7 @@
                 android:layout_width="48dp"
                 android:layout_height="37dp"
                 android:text="TextView"
+                android:textColor="@color/white"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.849"
@@ -57,8 +63,9 @@
             <TextView
                 android:id="@+id/destinationRowTextView"
                 android:layout_width="127dp"
-                android:layout_height="36dp"
+                android:layout_height="37dp"
                 android:text="TextView"
+                android:textColor="@color/white"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.613"
@@ -69,8 +76,9 @@
             <TextView
                 android:id="@+id/purchasesRowTextView"
                 android:layout_width="49dp"
-                android:layout_height="36dp"
+                android:layout_height="37dp"
                 android:text="TextView"
+                android:textColor="@color/white"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="1.0"

@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#333333"
     tools:context=".AccountDetailsActivity">
 
     <TextView
@@ -12,6 +13,7 @@
         android:layout_height="58dp"
         android:gravity="center"
         android:text="@string/account_details_button"
+        android:textColor="@color/white"
         android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -24,6 +26,7 @@
         android:layout_width="187dp"
         android:layout_height="58dp"
         android:gravity="center"
+        android:textColor="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -36,6 +39,7 @@
         android:layout_height="70dp"
         android:gravity="center"
         android:text="Account Info"
+        android:textColor="@color/white"
         android:textSize="24sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -50,6 +54,7 @@
         android:layout_height="70dp"
         android:gravity="center"
         android:text="Account Username"
+        android:textColor="@color/white"
         android:textSize="16sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -64,6 +69,7 @@
         android:layout_height="70dp"
         android:gravity="center"
         android:text="Account Reward Points"
+        android:textColor="@color/white"
         android:textSize="16sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
