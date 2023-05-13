@@ -51,7 +51,7 @@ public class UserLandingActivity extends AppCompatActivity {
 
         int userId = getIntent().getIntExtra(USER_LANDING_ACTIVITY_USER, -1);
         List<User> user = mUserDAO.getLogById(userId);
-        mWelcomeDisplay.setText(getString(R.string.landingPagePartial)+ user.get(0).getUsername());
+        mWelcomeDisplay.setText(getString(R.string.landingPagePartial) + " " + user.get(0).getUsername());
 
         if (user.get(0).getIsAdmin() == 1) {
             mAdminOptionsButton.setVisibility(View.VISIBLE);

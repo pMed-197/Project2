@@ -6,6 +6,8 @@ import androidx.room.Room;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 import com.example.myapplication.DB.AppDataBase;
@@ -21,6 +23,7 @@ public class AccountDetailsActivity extends AppCompatActivity {
     ActivityAccountDetailsBinding binding;
     TextView mDisplayUser;
     TextView mRewardPoints;
+    Button mBackButton;
     UserDAO mUserDAO;
 
     @Override
@@ -34,6 +37,7 @@ public class AccountDetailsActivity extends AppCompatActivity {
         mRewardPoints = binding.rewardPtsTextView;
 
         mDisplayUser = binding.usernameTextView;
+        mBackButton = binding.goBackButton9;
 
         mUserDAO = Room.databaseBuilder(this, AppDataBase.class, AppDataBase.DATABASE_NAME)
                 .allowMainThreadQueries()
@@ -42,8 +46,16 @@ public class AccountDetailsActivity extends AppCompatActivity {
                 .UserDAO();
         int userId = getIntent().getIntExtra(ACCOUNT_DETAILS_ACTIVITY, -1);
         List<User> user = mUserDAO.getLogById(userId);
-        mDisplayUser.setText("Username: "+user.get(0).getUsername());
-        mRewardPoints.setText("Reward Points: "+user.get(0).getRewardPoints());
+        mDisplayUser.setText(user.get(0).getUsername());
+        mRewardPoints.setText(Integer.toString(user.get(0).getRewardPoints()));
+
+        mBackButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = UserLandingActivity.getIntent(getApplicationContext(), userId);
+                startActivity(intent);
+            }
+        });
     }
 
     public static Intent getIntent(Context context, int userId) {

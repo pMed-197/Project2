@@ -28,4 +28,7 @@ public interface BookingsDAO {
 
     @Query("SELECT * FROM " + AppDataBase.BOOKINGS_TABLE)
     List<Bookings> getAllBookings();
+
+    @Query("SELECT * FROM " + AppDataBase.BOOKINGS_TABLE + " WHERE mUserId= :userId")
+    List<Bookings> getAllBookingsById(int userId);
 }

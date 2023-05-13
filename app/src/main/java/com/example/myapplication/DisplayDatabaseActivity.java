@@ -66,10 +66,10 @@ public class DisplayDatabaseActivity extends AppCompatActivity {
         mUserRecyclerView.setLayoutManager(new LinearLayoutManager(this));
 
         //setting up flights recycle view
-       /* List<Flights> flights = mFlightsDAO.getAllFlights();
+       List<Flights> flights = mFlightsDAO.getAllFlights();
         mFlightsRecyclerView = findViewById(R.id.flightTableRecyclerView);
         mFlightsRecyclerView.setAdapter(new FlightsRecyclerViewAdapter(this, flights));
-        mFlightsRecyclerView.setLayoutManager(new LinearLayoutManager(this));*/
+        mFlightsRecyclerView.setLayoutManager(new LinearLayoutManager(this));
 
         //setting up bookings recycle view
         List<Bookings> bookings = mBookingsDAO.getAllBookings();
