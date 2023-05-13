@@ -102,7 +102,7 @@ public class SearchResultsActivity extends AppCompatActivity implements Recycler
     public void displayInfo() {
         mFlights = getFlights(mWhereTo, mWhereFrom);
         mSearchResults = findViewById(R.id.SearchResultsRecyclerView);
-        mSearchResults.setAdapter(new FlightsRecyclerViewAdapter(this, mFlights, this));
+        mSearchResults.setAdapter(new UserFriendlyRecyclerViewAdapter(this, mFlights, this));
         mSearchResults.setLayoutManager(new LinearLayoutManager(this));
     }
 
