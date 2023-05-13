@@ -8,6 +8,8 @@ import androidx.room.Room;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 
 import com.example.myapplication.DB.AppDataBase;
 import com.example.myapplication.DB.BookingsDAO;
@@ -25,6 +27,7 @@ public class CheckBookingsActivity extends AppCompatActivity {
     private static final String USER_CHECK_BOOKINGS = "com.example.myapplication.UserCheckBookings";
 
     BookingsDAO mBookingsDAO;
+    Button mBackButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,6 +35,10 @@ public class CheckBookingsActivity extends AppCompatActivity {
         setContentView(R.layout.activity_check_bookings);
 
         binding = ActivityCheckBookingsBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
+
+        mBackButton = binding.goBackButton7;
+        int userId = getIntent().getIntExtra(USER_CHECK_BOOKINGS, -1);
 
         mBookingsDAO = Room.databaseBuilder(this, AppDataBase.class, AppDataBase.DATABASE_NAME)
                 .allowMainThreadQueries()
@@ -43,6 +50,14 @@ public class CheckBookingsActivity extends AppCompatActivity {
         mCheckBookings = findViewById(R.id.CheckBookingsRecyclerView);
         mCheckBookings.setAdapter(new BookingsRecyclerViewAdapter(this, bookings));
         mCheckBookings.setLayoutManager(new LinearLayoutManager(this));
+
+        mBackButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = UserLandingActivity.getIntent(getApplicationContext(), userId);
+                startActivity(intent);
+            }
+        });
     }
 
     public static Intent getIntent(Context context, int userId) {

@@ -15,6 +15,12 @@
             android:name=".CheckBookingsActivity"
             android:exported="false" />
         <activity
+            android:name=".SearchResultsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".searchFlightsActivity"
+            android:exported="false" />
+        <activity
             android:name=".AccountDetailsActivity"
             android:exported="false" />
         <activity
