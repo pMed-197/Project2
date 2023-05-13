@@ -10,7 +10,7 @@
     <string name="password_mismatch_message">ERROR: Passwords do not match!</string>
     <string name="login_userDNE_msg">ERROR: Username doesn\'t exist!</string>
     <string name="incorrect_password_msg">ERROR: Wrong password, try again!</string>
-    <string name="landingPagePartial">Welcome\n</string>
+    <string name="landingPagePartial">Welcome</string>
     <string name="search_flights">Search Flights</string>
     <string name="check_bookings">Check Bookings</string>
     <string name="logout">Logout</string>
