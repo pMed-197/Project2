@@ -39,6 +39,7 @@ public class CheckBookingsActivity extends AppCompatActivity {
 
         mBackButton = binding.goBackButton7;
         int userId = getIntent().getIntExtra(USER_CHECK_BOOKINGS, -1);
+
         mBookingsDAO = Room.databaseBuilder(this, AppDataBase.class, AppDataBase.DATABASE_NAME)
                 .allowMainThreadQueries()
                 .createFromAsset("database/AirlineTracker.db")
