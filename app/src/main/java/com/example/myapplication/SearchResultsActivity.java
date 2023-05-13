@@ -104,10 +104,10 @@ public class SearchResultsActivity extends AppCompatActivity implements Recycler
         int purchases = mFlights.get(position).getPurchases() + mQuantity;
         int capacity = mFlights.get(position).getCapacity();
         if(purchases > capacity){
-            Toast.makeText(SearchResultsActivity.this, "All Flights booked!", Toast.LENGTH_SHORT).show();
+            Toast.makeText(SearchResultsActivity.this, "Flight Can't Be Booked!", Toast.LENGTH_SHORT).show();
             return;
         }
-        Toast.makeText(SearchResultsActivity.this, "Flight booked.", Toast.LENGTH_SHORT).show();
+        Toast.makeText(SearchResultsActivity.this, "Flight Booked!", Toast.LENGTH_SHORT).show();
         Bookings booking = new Bookings(mUserID, mFlights.get(position).getFlightId(), mQuantity);
         mBookingsDAO.insert(booking);
         mFlightsDAO.setPurchases(mFlights.get(position).getFlightId(), purchases);
