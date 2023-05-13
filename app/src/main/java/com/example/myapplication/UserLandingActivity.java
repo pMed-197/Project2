@@ -81,6 +81,14 @@ public class UserLandingActivity extends AppCompatActivity {
             }
         });
 
+        mCheckBookings.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = CheckBookingsActivity.getIntent(getApplicationContext(), userId);
+                startActivity(intent);
+            }
+        });
+
         mSearchFlights.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -88,6 +96,7 @@ public class UserLandingActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
     }
 
     public static Intent getIntent(Context context, int userId) {

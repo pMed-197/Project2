@@ -20,9 +20,9 @@ import com.example.myapplication.databinding.ActivitySearchResultsBinding;
 import java.util.List;
 
 public class SearchResultsActivity extends AppCompatActivity implements RecyclerViewInterface{
-    public List<Flights> mFlights;
-    public int mQuantity;
-    public int mUserID;
+    List<Flights> mFlights;
+    int mQuantity;
+    int mUserID;
     private static final String SEARCH_RESULTS_ACTIVITY_USER = "com.example.myapplication.SearchResultsActivityUser";
     private static final String SEARCH_RESULTS_ACTIVITY_WHERE_TO = ".com.example.myapplication.SearchResultsActivityWhereTo";
 
@@ -103,10 +103,8 @@ public class SearchResultsActivity extends AppCompatActivity implements Recycler
             Toast.makeText(SearchResultsActivity.this, "All Flights booked!", Toast.LENGTH_SHORT).show();
             return;
         }
-        if(purchases <= capacity){
-            Toast.makeText(SearchResultsActivity.this, "Flight booked.", Toast.LENGTH_SHORT).show();
-            Bookings booking = new Bookings(mUserID, mFlights.get(position).getFlightId(), mQuantity);
-            mBookingsDAO.insert(booking);
-        }
+        Toast.makeText(SearchResultsActivity.this, "Flight booked.", Toast.LENGTH_SHORT).show();
+        Bookings booking = new Bookings(mUserID, mFlights.get(position).getFlightId(), mQuantity);
+        mBookingsDAO.insert(booking);
     }
 }

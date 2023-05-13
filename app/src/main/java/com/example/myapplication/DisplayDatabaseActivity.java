@@ -71,7 +71,7 @@ public class DisplayDatabaseActivity extends AppCompatActivity {
         mFlightsRecyclerView.setAdapter(new FlightsRecyclerViewAdapter(this, flights));
         mFlightsRecyclerView.setLayoutManager(new LinearLayoutManager(this));*/
 
-        //setting up flights recycle view
+        //setting up bookings recycle view
         List<Bookings> bookings = mBookingsDAO.getAllBookings();
         mBookingsRecyclerView = findViewById(R.id.bookingTableRecyclerView);
         mBookingsRecyclerView.setAdapter(new BookingsRecyclerViewAdapter(this, bookings));
