@@ -46,9 +46,9 @@ public class CheckBookingsActivity extends AppCompatActivity {
                 .build()
                 .BookingsDAO();
 
-        List<Bookings> bookings = mBookingsDAO.getAllBookings();
+        List<Bookings> bookings = mBookingsDAO.getAllBookingsById(userId);
         mCheckBookings = findViewById(R.id.CheckBookingsRecyclerView);
-        mCheckBookings.setAdapter(new BookingsRecyclerViewAdapter(this, bookings));
+        mCheckBookings.setAdapter(new UserFriendlyBookingRecycleViewAdapter(this, bookings));
         mCheckBookings.setLayoutManager(new LinearLayoutManager(this));
 
         mBackButton.setOnClickListener(new View.OnClickListener() {
