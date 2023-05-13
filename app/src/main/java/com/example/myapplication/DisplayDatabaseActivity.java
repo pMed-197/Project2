@@ -13,6 +13,7 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.example.myapplication.DB.AppDataBase;
+import com.example.myapplication.DB.BookingsDAO;
 import com.example.myapplication.DB.FlightsDAO;
 import com.example.myapplication.DB.UserDAO;
 import com.example.myapplication.databinding.ActivityDisplayDatabaseBinding;
@@ -25,9 +26,11 @@ public class DisplayDatabaseActivity extends AppCompatActivity {
     ActivityDisplayDatabaseBinding binding;
     RecyclerView mUserRecyclerView;
     RecyclerView mFlightsRecyclerView;
+    RecyclerView mBookingsRecyclerView;
     Button mBackButton;
     UserDAO mUserDAO;
     FlightsDAO mFlightsDAO;
+    BookingsDAO mBookingsDAO;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,6 +50,11 @@ public class DisplayDatabaseActivity extends AppCompatActivity {
                 .createFromAsset("database/AirlineTracker.db")
                 .build()
                 .FlightsDAO();
+        mBookingsDAO = Room.databaseBuilder(this, AppDataBase.class, AppDataBase.DATABASE_NAME)
+                .allowMainThreadQueries()
+                .createFromAsset("database/AirlineTracker.db")
+                .build()
+                .BookingsDAO();
 
         int userId = getIntent().getIntExtra(DISPLAY_DATABASE_ACTIVITY_USER, -1);
         mBackButton = binding.goBackButton4;
@@ -58,10 +66,16 @@ public class DisplayDatabaseActivity extends AppCompatActivity {
         mUserRecyclerView.setLayoutManager(new LinearLayoutManager(this));
 
         //setting up flights recycle view
-        List<Flights> flights = mFlightsDAO.getAllFlights();
+       /* List<Flights> flights = mFlightsDAO.getAllFlights();
         mFlightsRecyclerView = findViewById(R.id.flightTableRecyclerView);
         mFlightsRecyclerView.setAdapter(new FlightsRecyclerViewAdapter(this, flights));
-        mFlightsRecyclerView.setLayoutManager(new LinearLayoutManager(this));
+        mFlightsRecyclerView.setLayoutManager(new LinearLayoutManager(this));*/
+
+        //setting up bookings recycle view
+        List<Bookings> bookings = mBookingsDAO.getAllBookings();
+        mBookingsRecyclerView = findViewById(R.id.bookingTableRecyclerView);
+        mBookingsRecyclerView.setAdapter(new BookingsRecyclerViewAdapter(this, bookings));
+        mBookingsRecyclerView.setLayoutManager(new LinearLayoutManager(this));
 
         mBackButton.setOnClickListener(new View.OnClickListener() {
             @Override

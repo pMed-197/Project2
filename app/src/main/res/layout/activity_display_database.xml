@@ -12,10 +12,10 @@
         android:layout_height="144dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.478"
+        app:layout_constraintHorizontal_bias="0.476"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.069" />
+        app:layout_constraintVertical_bias="0.066" />
 
     <TextView
         android:id="@+id/textView11"
@@ -44,6 +44,19 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.289" />
 
+    <TextView
+        android:id="@+id/textView10"
+        android:layout_width="129dp"
+        android:layout_height="36dp"
+        android:gravity="center"
+        android:text="@string/booking_s_table_text_view"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.571" />
+
     <Button
         android:id="@+id/goBackButton4"
         android:layout_width="120dp"
@@ -58,13 +71,23 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/flightTableRecyclerView"
-        android:layout_width="383dp"
-        android:layout_height="144dp"
+        android:layout_width="391dp"
+        android:layout_height="143dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.357"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.403" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/bookingTableRecyclerView"
+        android:layout_width="391dp"
+        android:layout_height="147dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.483"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.74" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

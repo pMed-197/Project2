@@ -23,6 +23,7 @@ public class LogActivity extends AppCompatActivity {
     TextView mErrMsg;
 
     Button mSubmit;
+    Button mBackButton;
 
     UserDAO mUserDAO;
     ActivityLogBinding binding;
@@ -38,6 +39,7 @@ public class LogActivity extends AppCompatActivity {
         mUsername = binding.mainUsernameEditText;
         mUserPassword = binding.mainUserPasswordEditText;
         mSubmit = binding.mainSubmitButton;
+        mBackButton = binding.goBackButton5;
         mErrMsg = binding.loginErrMsg;
 
         mUserDAO = Room.databaseBuilder(this, AppDataBase.class, AppDataBase.DATABASE_NAME)
@@ -54,6 +56,14 @@ public class LogActivity extends AppCompatActivity {
                 }
                 User user = mUserDAO.getByUsername(mUsername.getText().toString());
                 Intent intent = UserLandingActivity.getIntent(getApplicationContext(), user.getLogId());
+                startActivity(intent);
+            }
+        });
+
+        mBackButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = MainActivity.getIntent(getApplicationContext());
                 startActivity(intent);
             }
         });
