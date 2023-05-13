@@ -13,15 +13,12 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.List;
 
 public class FlightsRecyclerViewAdapter extends RecyclerView.Adapter<FlightsRecyclerViewAdapter.MyViewHolder>{
-    private final RecyclerViewInterface mRecyclerViewInterface;
     Context mContext;
     List<Flights> mFlights;
 
-    public FlightsRecyclerViewAdapter( Context context, List<Flights> flights, RecyclerViewInterface recyclerViewInterface) {
+    public FlightsRecyclerViewAdapter( Context context, List<Flights> flights) {
         mContext = context;
         mFlights = flights;
-        mRecyclerViewInterface = recyclerViewInterface;
-
     }
 
     @NonNull
@@ -29,7 +26,7 @@ public class FlightsRecyclerViewAdapter extends RecyclerView.Adapter<FlightsRecy
     public FlightsRecyclerViewAdapter.MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater inflater = LayoutInflater.from(mContext);
         View view = inflater.inflate(R.layout.flight_table_recycleview_row, parent, false);
-        return new FlightsRecyclerViewAdapter.MyViewHolder(view, mRecyclerViewInterface);
+        return new FlightsRecyclerViewAdapter.MyViewHolder(view);
     }
 
     @SuppressLint("SetTextI18n")
@@ -53,7 +50,7 @@ public class FlightsRecyclerViewAdapter extends RecyclerView.Adapter<FlightsRecy
         TextView mDestination;
         TextView mCapacity;
         TextView mPurchases;
-        public MyViewHolder(@NonNull View itemView, RecyclerViewInterface recyclerViewInterface) {
+        public MyViewHolder(@NonNull View itemView) {
             super(itemView);
 
             mFlightId = itemView.findViewById(R.id.flightIdRowTextView);
@@ -61,17 +58,6 @@ public class FlightsRecyclerViewAdapter extends RecyclerView.Adapter<FlightsRecy
             mDestination = itemView.findViewById(R.id.destinationRowTextView);
             mCapacity = itemView.findViewById(R.id.capacityRowTextView);
             mPurchases = itemView.findViewById(R.id.purchasesRowTextView);
-            itemView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    if(recyclerViewInterface != null){
-                        int pos = getAdapterPosition();
-                        if(pos!= RecyclerView.NO_POSITION){
-                            recyclerViewInterface.onItemClick(pos);
-                        }
-                    }
-                }
-            });
         }
     }
 }
