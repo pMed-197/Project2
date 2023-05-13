@@ -23,6 +23,8 @@ public class SearchResultsActivity extends AppCompatActivity implements Recycler
     List<Flights> mFlights;
     int mQuantity;
     int mUserID;
+    String mWhereTo;
+    String mWhereFrom;
     private static final String SEARCH_RESULTS_ACTIVITY_USER = "com.example.myapplication.SearchResultsActivityUser";
     private static final String SEARCH_RESULTS_ACTIVITY_WHERE_TO = ".com.example.myapplication.SearchResultsActivityWhereTo";
 
@@ -48,8 +50,8 @@ public class SearchResultsActivity extends AppCompatActivity implements Recycler
 
         mGoBackButton = binding.GoBackButton;
         mUserID = getIntent().getIntExtra(SEARCH_RESULTS_ACTIVITY_USER, -1);
-        String whereTo = getIntent().getStringExtra(SEARCH_RESULTS_ACTIVITY_WHERE_TO);
-        String whereFrom = getIntent().getStringExtra(SEARCH_RESULTS_ACTIVITY_WHERE_FROM);
+        mWhereTo = getIntent().getStringExtra(SEARCH_RESULTS_ACTIVITY_WHERE_TO);
+        mWhereFrom = getIntent().getStringExtra(SEARCH_RESULTS_ACTIVITY_WHERE_FROM);
         mQuantity = getIntent().getIntExtra(SEARCH_RESULTS_ACTIVITY_QUANTITY, -1);
 
         mFlightsDAO = Room.databaseBuilder(this, AppDataBase.class, AppDataBase.DATABASE_NAME)
@@ -63,12 +65,7 @@ public class SearchResultsActivity extends AppCompatActivity implements Recycler
                 .build()
                 .BookingsDAO();
 
-
-        mFlights = getFlights(whereTo, whereFrom);
-        mSearchResults = findViewById(R.id.SearchResultsRecyclerView);
-        mSearchResults.setAdapter(new FlightsRecyclerViewAdapter(this, mFlights, this));
-        mSearchResults.setLayoutManager(new LinearLayoutManager(this));
-
+        displayInfo();
         mGoBackButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -95,6 +92,13 @@ public class SearchResultsActivity extends AppCompatActivity implements Recycler
         return flights;
     }
 
+    public void displayInfo() {
+        mFlights = getFlights(mWhereTo, mWhereFrom);
+        mSearchResults = findViewById(R.id.SearchResultsRecyclerView);
+        mSearchResults.setAdapter(new FlightsRecyclerViewAdapter(this, mFlights, this));
+        mSearchResults.setLayoutManager(new LinearLayoutManager(this));
+    }
+
     @Override
     public void onItemClick(int position) {
         int purchases = mFlights.get(position).getPurchases() + mQuantity;
@@ -106,5 +110,7 @@ public class SearchResultsActivity extends AppCompatActivity implements Recycler
         Toast.makeText(SearchResultsActivity.this, "Flight booked.", Toast.LENGTH_SHORT).show();
         Bookings booking = new Bookings(mUserID, mFlights.get(position).getFlightId(), mQuantity);
         mBookingsDAO.insert(booking);
+        mFlightsDAO.setPurchases(mFlights.get(position).getFlightId(), purchases);
+        displayInfo();
     }
 }

@@ -30,4 +30,7 @@ public interface FlightsDAO {
 
     @Query("SELECT * FROM " + AppDataBase.FLIGHTS_TABLE + " WHERE mOrigin = :origin AND mDestination = :destination")
     List<Flights> getByOriginAndDestination(String origin, String destination);
+
+    @Query("UPDATE " + AppDataBase.FLIGHTS_TABLE + " SET mPurchases = :purchases " + " WHERE mFlightId = :flightId")
+    void setPurchases(int flightId, int purchases);
 }

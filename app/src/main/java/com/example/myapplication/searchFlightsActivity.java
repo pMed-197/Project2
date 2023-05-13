@@ -16,6 +16,7 @@ public class searchFlightsActivity extends AppCompatActivity {
 
     ActivitySearchFlightsBinding binding;
     Button mSearchFlights;
+    Button mBackButton;
     EditText mWhereTo;
     EditText mWhereFrom;
     EditText mQuantity;
@@ -32,6 +33,7 @@ public class searchFlightsActivity extends AppCompatActivity {
         mWhereTo = binding.Arrival;
         mWhereFrom = binding.From;
         mQuantity = binding.QuantityTickets;
+        mBackButton = binding.goBackButton8;
         int userId = getIntent().getIntExtra(SEARCH_FLIGHTS_ACTIVITY_USER, -1);
 
         mSearchFlights.setOnClickListener(new View.OnClickListener() {
@@ -45,7 +47,13 @@ public class searchFlightsActivity extends AppCompatActivity {
             }
         });
 
-
+        mBackButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = UserLandingActivity.getIntent(getApplicationContext(), userId);
+                startActivity(intent);
+            }
+        });
     }
 
     public static Intent getIntent(Context context, int userId) {

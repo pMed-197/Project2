@@ -36,6 +36,14 @@
     <string name="user_s_table_text_view">User\'s Table</string>
     <string name="booking_s_table_text_view">Booking\'s Table</string>
     <string name="flight_s_table_text_view">Flight\'s Table</string>
+    <string name="search_button">Search!</string>
+    <string name="business_radio">Business</string>
+    <string name="economy_radio">Economy</string>
+    <string name="one_way_radio">One-Way</string>
+    <string name="round_trip_radio">Round Trip</string>
+    <string name="quantity_radio">Quantity</string>
+    <string name="return_date">Return Date</string>
+    <string name="departure_date">Departure Date</string>
 
 
 </resources>
