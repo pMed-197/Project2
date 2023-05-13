@@ -15,6 +15,7 @@ import android.widget.Toast;
 import com.example.myapplication.DB.AppDataBase;
 import com.example.myapplication.DB.BookingsDAO;
 import com.example.myapplication.DB.FlightsDAO;
+import com.example.myapplication.DB.UserDAO;
 import com.example.myapplication.databinding.ActivitySearchResultsBinding;
 
 import java.util.List;
@@ -37,6 +38,7 @@ public class SearchResultsActivity extends AppCompatActivity implements Recycler
 
     FlightsDAO mFlightsDAO;
     BookingsDAO mBookingsDAO;
+    UserDAO mUserDAO;
 
 
     @Override
@@ -64,6 +66,11 @@ public class SearchResultsActivity extends AppCompatActivity implements Recycler
                 .createFromAsset("database/AirlineTracker.db")
                 .build()
                 .BookingsDAO();
+        mUserDAO = Room.databaseBuilder(this, AppDataBase.class, AppDataBase.DATABASE_NAME)
+                .allowMainThreadQueries()
+                .createFromAsset("database/AirlineTracker.db")
+                .build()
+                .UserDAO();
 
         displayInfo();
         mGoBackButton.setOnClickListener(new View.OnClickListener() {
@@ -102,6 +109,7 @@ public class SearchResultsActivity extends AppCompatActivity implements Recycler
     @Override
     public void onItemClick(int position) {
         int purchases = mFlights.get(position).getPurchases() + mQuantity;
+        int points = mQuantity * 150;
         int capacity = mFlights.get(position).getCapacity();
         if(purchases > capacity){
             Toast.makeText(SearchResultsActivity.this, "Flight Can't Be Booked!", Toast.LENGTH_SHORT).show();
@@ -111,6 +119,8 @@ public class SearchResultsActivity extends AppCompatActivity implements Recycler
         Bookings booking = new Bookings(mUserID, mFlights.get(position).getFlightId(), mQuantity);
         mBookingsDAO.insert(booking);
         mFlightsDAO.setPurchases(mFlights.get(position).getFlightId(), purchases);
+        List<User> user = mUserDAO.getLogById(mUserID);
+        mUserDAO.setRewardPoints(mUserID, user.get(0).getRewardPoints()+points);
         displayInfo();
     }
 }

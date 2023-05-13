@@ -1,6 +1,7 @@
 package com.example.myapplication;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.room.Room;
 
 import android.content.Context;
 import android.content.Intent;
@@ -8,7 +9,11 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
+import com.example.myapplication.DB.AppDataBase;
+import com.example.myapplication.DB.BookingsDAO;
+import com.example.myapplication.DB.FlightsDAO;
 import com.example.myapplication.databinding.ActivityAdminOptionsBinding;
 import com.example.myapplication.databinding.ActivityChangeBookingBinding;
 
@@ -18,6 +23,9 @@ public class ChangeBookingActivity extends AppCompatActivity {
     EditText mBookingId;
     Button mDeleteBooking;
     Button mBackButton;
+
+    BookingsDAO mBookingsDAO;
+    FlightsDAO mFlightsDAO;
 
 
     @Override
@@ -32,12 +40,33 @@ public class ChangeBookingActivity extends AppCompatActivity {
         mDeleteBooking = binding.deleteBookingButton;
         mBackButton = binding.goBackButton3;
 
+        mBookingsDAO = Room.databaseBuilder(this, AppDataBase.class,AppDataBase.DATABASE_NAME)
+                .allowMainThreadQueries()
+                .createFromAsset("database/AirlineTracker.db")
+                .build()
+                .BookingsDAO();
+
+        mFlightsDAO = Room.databaseBuilder(this, AppDataBase.class,AppDataBase.DATABASE_NAME)
+                .allowMainThreadQueries()
+                .createFromAsset("database/AirlineTracker.db")
+                .build()
+                .FlightsDAO();
+
         int userId = getIntent().getIntExtra(CHANGE_BOOKING_ACTIVITY_USER, -1);
 
         mDeleteBooking.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //TODO: ADD WORKING DELETE BOOKING FUNCTION
+                Bookings bookings = mBookingsDAO.getById(Integer.parseInt(mBookingId.getText().toString()));
+                if (bookings != null) {
+                    Toast.makeText(ChangeBookingActivity.this, "Booking Deleted!", Toast.LENGTH_SHORT).show();
+                    int purchases = bookings.getQuantity();
+                    int flightId = bookings.getFlightId();
+                    mBookingsDAO.delete(bookings);
+                    mFlightsDAO.setPurchases(flightId, mFlightsDAO.getById(flightId).getPurchases()-purchases);
+                    return;
+                }
+                Toast.makeText(ChangeBookingActivity.this, "Booking Not Found!", Toast.LENGTH_SHORT).show();
             }
         });
 

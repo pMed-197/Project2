@@ -32,4 +32,7 @@ public interface UserDAO {
 
     @Query("SELECT * FROM " + AppDataBase.USER_TABLE)
     List<User> getAllUsers();
+
+    @Query("UPDATE " + AppDataBase.USER_TABLE + " SET mRewardPoints = :rewardPoints " + " WHERE mLogId = :userId")
+    void setRewardPoints(int userId, int rewardPoints);
 }

@@ -81,8 +81,8 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/bookingTableRecyclerView"
-        android:layout_width="391dp"
-        android:layout_height="147dp"
+        android:layout_width="396dp"
+        android:layout_height="149dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.483"
