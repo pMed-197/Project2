@@ -4,13 +4,17 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
+import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.myapplication.databinding.ActivitySearchFlightsBinding;
+
+import io.github.muddz.styleabletoast.StyleableToast;
 
 public class searchFlightsActivity extends AppCompatActivity {
     private static final String SEARCH_FLIGHTS_ACTIVITY_USER = "com.example.myapplication.SearchFlightsActivityUser";
@@ -71,19 +75,43 @@ public class searchFlightsActivity extends AppCompatActivity {
 
     public boolean validateInput() {
         if (mWhereFrom.getText().toString().isEmpty()) {
-            Toast.makeText(searchFlightsActivity.this, "Where From is Empty!", Toast.LENGTH_SHORT).show();
+            new StyleableToast
+                    .Builder(this)
+                    .text("Where From is Empty!")
+                    .textColor(Color.WHITE)
+                    .gravity(Gravity.TOP)
+                    .backgroundColor(Color.RED)
+                    .show();
             return false;
         }
         if (mWhereTo.getText().toString().isEmpty()) {
-            Toast.makeText(searchFlightsActivity.this, "Where To is Empty!", Toast.LENGTH_SHORT).show();
+            new StyleableToast
+                    .Builder(this)
+                    .text("Where To is Empty!")
+                    .textColor(Color.WHITE)
+                    .gravity(Gravity.TOP)
+                    .backgroundColor(Color.RED)
+                    .show();
             return false;
         }
         if (mQuantity.getText().toString().isEmpty()) {
-            Toast.makeText(searchFlightsActivity.this, "Quantity is Empty!", Toast.LENGTH_SHORT).show();
+            new StyleableToast
+                    .Builder(this)
+                    .text("Quantity is Empty!")
+                    .textColor(Color.WHITE)
+                    .gravity(Gravity.TOP)
+                    .backgroundColor(Color.RED)
+                    .show();
             return false;
         }
         if (mDepartureDate.getText().toString().isEmpty() || mReturnDate.getText().toString().isEmpty()) {
-            Toast.makeText(searchFlightsActivity.this, "Date's are Wrong!", Toast.LENGTH_SHORT).show();
+            new StyleableToast
+                    .Builder(this)
+                    .text("Date's are Wrong!")
+                    .textColor(Color.WHITE)
+                    .gravity(Gravity.TOP)
+                    .backgroundColor(Color.RED)
+                    .show();
             return false;
         }
         return true;

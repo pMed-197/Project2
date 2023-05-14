@@ -5,7 +5,9 @@ import androidx.room.Room;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
+import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -16,6 +18,8 @@ import com.example.myapplication.DB.BookingsDAO;
 import com.example.myapplication.DB.FlightsDAO;
 import com.example.myapplication.databinding.ActivityAdminOptionsBinding;
 import com.example.myapplication.databinding.ActivityChangeBookingBinding;
+
+import io.github.muddz.styleabletoast.StyleableToast;
 
 public class ChangeBookingActivity extends AppCompatActivity {
     private static final String CHANGE_BOOKING_ACTIVITY_USER = "com.example.myapplication.ChangeBookingActivityUser";
@@ -59,14 +63,26 @@ public class ChangeBookingActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Bookings bookings = mBookingsDAO.getById(Integer.parseInt(mBookingId.getText().toString()));
                 if (bookings != null) {
-                    Toast.makeText(ChangeBookingActivity.this, "Booking Deleted!", Toast.LENGTH_SHORT).show();
+                    new StyleableToast
+                            .Builder(ChangeBookingActivity.this)
+                            .text("Booking Deleted!")
+                            .textColor(Color.WHITE)
+                            .gravity(Gravity.TOP)
+                            .backgroundColor(Color.GREEN)
+                            .show();
                     int purchases = bookings.getQuantity();
                     int flightId = bookings.getFlightId();
                     mBookingsDAO.delete(bookings);
                     mFlightsDAO.setPurchases(flightId, mFlightsDAO.getById(flightId).getPurchases()-purchases);
                     return;
                 }
-                Toast.makeText(ChangeBookingActivity.this, "Booking Not Found!", Toast.LENGTH_SHORT).show();
+                new StyleableToast
+                        .Builder(ChangeBookingActivity.this)
+                        .text("Booking Not Found!")
+                        .textColor(Color.WHITE)
+                        .gravity(Gravity.TOP)
+                        .backgroundColor(Color.RED)
+                        .show();
             }
         });
 
